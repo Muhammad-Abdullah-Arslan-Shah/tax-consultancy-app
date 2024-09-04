@@ -10,7 +10,8 @@ const Navbar = () => {
   // WhatsAppButton Component
   const WhatsAppButton = () => (
     <a
-      href="https://api.whatsapp.com/send?phone=923428747551"
+      href="https://api.whatsapp.com/send?phone=923454784733
+"
       target="_blank"
       rel="noopener noreferrer"
       className="flex bg-green-600 text-white px-4 py-2 rounded-3xl hover:bg-green-300 font-bold transition-all duration-300 ease-in-out"
@@ -25,12 +26,12 @@ const Navbar = () => {
   );
 
   return (
-    <nav className="p-1 bg-white">
+    <nav className="py-1 bg-white">
       <div className="mx-auto flex justify-between items-center">
         {/* Logo */}
         <div className="flex-shrink-0">
           <a href="#home">
-            <img src={logo} alt="Logo" className="h-40 w-40" />
+            <img src={logo} alt="Logo" className="h-48 w-48" />
           </a>
         </div>
 

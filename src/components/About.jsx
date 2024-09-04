@@ -3,6 +3,7 @@ import React from 'react';
 const About = () => {
   return (
     <div
+    
       className="relative bg-fixed bg-cover bg-center py-20 px-6"
       style={{ backgroundImage: "url('/src/assets/about back.jpg')", backgroundColor: 'rgba(0, 0, 0, 0.3)', backgroundBlendMode: 'overlay' }}
     >

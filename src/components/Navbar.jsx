@@ -5,7 +5,7 @@ import hamburger from "../assets/hamburger.png";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const links = ['Home', 'Services', "About",'Mission', 'Vision', 'Team members', 'Clients', 'Contact'];
+  const links = ['Home', 'Services', 'Mission & Vision', 'Team members', 'Clients', 'Contact'];
 
   // WhatsAppButton Component
   const WhatsAppButton = () => (
@@ -13,7 +13,7 @@ const Navbar = () => {
       href="https://api.whatsapp.com/send?phone=923428747551"
       target="_blank"
       rel="noopener noreferrer"
-      className="flex bg-green-300 text-white px-4 py-2 rounded-3xl hover:bg-green-600 font-bold transition-all duration-300 ease-in-out"
+      className="flex bg-green-600 text-white px-4 py-2 rounded-3xl hover:bg-green-300 font-bold transition-all duration-300 ease-in-out"
     >
       <img
         src={whatsApp}
@@ -58,7 +58,7 @@ const Navbar = () => {
             onClick={() => setIsOpen(!isOpen)}
             className="hover:text-black focus:outline-none"
           >
-            <img src= {hamburger} alt='hamburger icon' className='h-4 w-4'></img>
+            <img src= {hamburger} alt='hamburger icon' className='h-4 w-4 m-4'></img>
           </button>
         </div>
       </div>

@@ -4,7 +4,8 @@ import missionPic from '../assets/mission pic.jpg';
 const MissionVision = () => {
   return (
     <>
-      <div className="flex flex-col lg:flex-row items-stretch bg-indigo-900 py-16 px-6 lg:px-24">
+      <div className="flex flex-col lg:flex-row items-stretch bg-indigo-900 py-16 px-6 lg:px-24"
+      id = "mission& vision">
         <div className="w-full lg:w-2/3 flex flex-col justify-between">
           {/* Mission Section */}
           <div className="flex flex-col justify-center mb-12 lg:mb-0">

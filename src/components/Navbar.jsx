@@ -42,7 +42,7 @@ const Navbar = () => {
             <a
               key={text}
               href={`#${text.toLowerCase().replace(' ', '')}`}
-              className="block lg:inline-block mx-2 p-1 text-black-300 hover:text-black border-b-2 border-transparent hover:border-[#172554] transition-all duration-300 ease-in-out"
+              className="block lg:inline-block mx-2 p-1 text-black-300 hover:text-gray-400 border-b-2 border-transparent hover:border-[#172554] transition-all duration-300 ease-in-out"
             >
               {text}
             </a>

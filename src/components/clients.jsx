@@ -60,7 +60,7 @@ const Clients = () => {
   };
 
   return (
-    <section className="relative bg-gray-100 py-16">
+    <section className="relative bg-gray-100 py-16" id='clients'>
       {/* Background Image */}
       <div 
         className="absolute inset-0 bg-cover bg-fixed bg-center"

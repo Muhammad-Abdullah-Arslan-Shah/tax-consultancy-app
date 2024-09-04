@@ -33,7 +33,7 @@ const membersData = [
 
 const Members = () => {
   return (
-    <section className="bg-gray-100 py-16">
+    <section className="bg-gray-100 py-16" id='teammembers'>
       <div className="container mx-auto px-6">
         <h2 className="text-6xl font-semibold text-center text-indigo-800 mb-12">
           Meet <span className='text-amber-500'>Our Team</span>

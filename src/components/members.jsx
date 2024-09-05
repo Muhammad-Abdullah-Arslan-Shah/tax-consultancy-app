@@ -67,10 +67,10 @@ const Members = () => {
             // Animation for all screen sizes
             const animation = useSpring({
               to: {
-                transform: inView ? 'translateY(0)' : 'translateY(50px)',
-                opacity: inView ? 1 : 0,
+                transform: inView ? 'translateY(0)' : 'translateY(100px)',
+                opacity: inView ? 1 : 0.5,
               },
-              config: { duration: 600 },
+              config: { duration: 400 },
               immediate: false, // Always animate
             });
 

@@ -35,10 +35,10 @@ const membersData = [
 
 const Members = () => {
   return (
-    <section className="bg-gray-100 py-16" id='teammembers'>
+    <section className="bg-gray-100 py-16" id="teammembers">
       <div className="container mx-auto px-6">
         <h2 className="text-6xl font-semibold text-center text-indigo-800 mb-12">
-          Meet <span className='text-amber-500'>Our Team</span>
+          Meet <span className="text-amber-500">Our Team</span>
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {membersData.map((member, index) => {
@@ -47,17 +47,17 @@ const Members = () => {
               threshold: 0.1,
             });
 
-            // React Spring animation
+            // React Spring animation with optimized configuration for smoother transitions
             const animation = useSpring({
               to: { transform: inView ? 'translateY(0)' : 'translateY(50px)', opacity: inView ? 1 : 0 },
-              config: { duration: 500 },
+              config: { mass: 1, tension: 280, friction: 10, duration: 600 }, // smoother animation settings
             });
 
             return (
               <animated.div
                 ref={ref}
                 key={index}
-                className={`${member.bgColor} shadow-lg rounded-lg p-6 flex flex-col items-center transform transition-transform duration-300 ease-in-out hover:scale-105 hover:shadow-2xl`}
+                className={`${member.bgColor} shadow-lg rounded-lg p-6 flex flex-col items-center transform transition-transform duration-300 ease-in-out lg:hover:scale-105 lg:hover:shadow-2xl`} // hover effects only on larger screens
                 style={animation}
               >
                 <img

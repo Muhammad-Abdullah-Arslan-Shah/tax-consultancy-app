@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSpring, animated } from '@react-spring/web';
 import { useInView } from 'react-intersection-observer';
 import member1 from '../assets/members/asim.png';
@@ -34,6 +34,22 @@ const membersData = [
 ];
 
 const Members = () => {
+  const [isLargeScreen, setIsLargeScreen] = useState(true);
+
+  // Detect screen size change
+  useEffect(() => {
+    const handleResize = () => {
+      setIsLargeScreen(window.innerWidth >= 1024); // 'lg' breakpoint in Tailwind is 1024px
+    };
+
+    window.addEventListener('resize', handleResize);
+    handleResize(); // Check on initial load
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   return (
     <section className="bg-gray-100 py-16" id="teammembers">
       <div className="container mx-auto px-6">
@@ -47,17 +63,21 @@ const Members = () => {
               threshold: 0.1,
             });
 
-            // React Spring animation with optimized configuration for smoother transitions
+            // Disable animation for small screens
             const animation = useSpring({
-              to: { transform: inView ? 'translateY(0)' : 'translateY(50px)', opacity: inView ? 1 : 0 },
-              config: {  duration: 600 }, // smoother animation settings
+              to: {
+                transform: inView ? 'translateY(0)' : 'translateY(50px)',
+                opacity: inView ? 1 : 0,
+              },
+              config: { duration: 600 },
+              immediate: !isLargeScreen, // Disable animation on small screens
             });
 
             return (
               <animated.div
                 ref={ref}
                 key={index}
-                className={`${member.bgColor} shadow-lg rounded-lg p-6 flex flex-col items-center transform transition-transform duration-300 ease-in-out lg:hover:scale-105 lg:hover:shadow-2xl`} // hover effects only on larger screens
+                className={`${member.bgColor} shadow-lg rounded-lg p-6 flex flex-col items-center transform transition-transform duration-300 ease-in-out lg:hover:scale-105 lg:hover:shadow-2xl`}
                 style={animation}
               >
                 <img

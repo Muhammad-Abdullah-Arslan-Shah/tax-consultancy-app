@@ -55,7 +55,7 @@ const servicesData = [
 const Services = () => {
   // Define the trail animation
   const trail = useTrail(servicesData.length, {
-    from: { opacity: 0.7, transform: 'translateX(-50px)' },
+    from: { opacity: 0.6, transform: 'translateX(-50px)' },
     to: { opacity: 1, transform: 'translateX(0px)' },
     config: { tension: 220, friction: 120 },
     delay: 150,

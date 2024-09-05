@@ -34,12 +34,13 @@ const membersData = [
 ];
 
 const Members = () => {
-  const [isLargeScreen, setIsLargeScreen] = useState(true);
+  // Remove state and logic for large screen
+  // const [isLargeScreen, setIsLargeScreen] = useState(true);
 
-  // Detect screen size change
+  // Detect screen size change (if needed for other purposes)
   useEffect(() => {
     const handleResize = () => {
-      setIsLargeScreen(window.innerWidth >= 1024); // 'lg' breakpoint in Tailwind is 1024px
+      // Your logic to handle resize if needed
     };
 
     window.addEventListener('resize', handleResize);
@@ -63,14 +64,14 @@ const Members = () => {
               threshold: 0.1,
             });
 
-            // Disable animation for small screens
+            // Animation for all screen sizes
             const animation = useSpring({
               to: {
                 transform: inView ? 'translateY(0)' : 'translateY(50px)',
                 opacity: inView ? 1 : 0,
               },
               config: { duration: 600 },
-              immediate: !isLargeScreen, // Disable animation on small screens
+              immediate: false, // Always animate
             });
 
             return (

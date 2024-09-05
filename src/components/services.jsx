@@ -54,23 +54,8 @@ const servicesData = [
 ];
 
 const Services = () => {
-  const [isLargeScreen, setIsLargeScreen] = useState(false);
+  // Remove state and logic for large screen
   const [hasAnimated, setHasAnimated] = useState(false); // Track if animation has been triggered
-
-  // Check if the screen size is large or not
-  useEffect(() => {
-    const mediaQuery = window.matchMedia('(min-width: 1024px)');
-    setIsLargeScreen(mediaQuery.matches);
-
-    const handleResize = () => {
-      setIsLargeScreen(mediaQuery.matches);
-    };
-
-    mediaQuery.addEventListener('change', handleResize);
-    return () => {
-      mediaQuery.removeEventListener('change', handleResize);
-    };
-  }, []);
 
   // Use the intersection observer to start the animation when the section is in view
   const { ref, inView } = useInView({
@@ -84,7 +69,7 @@ const Services = () => {
     to: { opacity: inView ? 1 : 0.6, transform: inView ? 'translateX(0px)' : 'translateX(-50px)' },
     config: { tension: 220, friction: 30 },
     delay: 100,
-    immediate: !isLargeScreen, // Disable animation on small screens
+    immediate: false, // Always animate regardless of screen size
     onRest: () => setHasAnimated(true), // Track if the animation has run once
   });
 

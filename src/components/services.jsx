@@ -1,4 +1,5 @@
-import React from "react";
+import React from 'react';
+import { useTrail, animated } from '@react-spring/web';
 import audit from '../assets/services/audit pic.jpg';
 import tax from '../assets/services/tax.png';
 import corporate from '../assets/services/corporate.jpg';
@@ -52,31 +53,38 @@ const servicesData = [
 ];
 
 const Services = () => {
+  // Define the trail animation
+  const trail = useTrail(servicesData.length, {
+    from: { opacity: 0.7, transform: 'translateX(-50px)' },
+    to: { opacity: 1, transform: 'translateX(0px)' },
+    config: { tension: 220, friction: 120 },
+    delay: 150,
+  });
+
   return (
-    <section className="bg-gray-100 py-16 "
-    id = "services">
+    <section className="bg-gray-100 py-16" id="services">
       <div className="container mx-auto px-6">
         <h2 className="text-6xl font-semibold text-center text-indigo-800 mb-12">
           Our <span className="text-amber-500"> Services</span>
-          
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {servicesData.map((service, index) => (
-            <div
+          {trail.map((style, index) => (
+            <animated.div
               key={index}
-              className="bg-white shadow-2xl rounded-lg p-6 transform transition duration-500 hover:scale-105 relative overflow-hidden"
+              style={style}
+              className="bg-indigo-700 shadow-2xl  rounded-lg p-6 transform transition duration-500 hover:scale-105 relative overflow-hidden"
             >
               <div
                 className="h-48 w-full bg-cover bg-center rounded-t-lg"
-                style={{ backgroundImage: `url(${service.imageUrl})` }}
+                style={{ backgroundImage: `url(${servicesData[index].imageUrl})` }}
               ></div>
               <div className="p-4 relative">
                 <div className="absolute top-0 right-0 h-10 w-10 bg-white transform rotate-45 origin-top-right"></div>
-                <h3 className="text-2xl font-semibold text-gray-700 mb-4">
-                  {service.title}
+                <h3 className="text-2xl font-semibold text-white mb-4">
+                  {servicesData[index].title}
                 </h3>
-                <ul className="text-gray-600 space-y-2">
-                  {service.items.map((item, idx) => (
+                <ul className="text-white space-y-2">
+                  {servicesData[index].items.map((item, idx) => (
                     <li
                       key={idx}
                       className="flex items-center border-b pb-2 hover:text-gray-800 transition duration-300"
@@ -96,7 +104,7 @@ const Services = () => {
                   ))}
                 </ul>
               </div>
-            </div>
+            </animated.div>
           ))}
         </div>
       </div>

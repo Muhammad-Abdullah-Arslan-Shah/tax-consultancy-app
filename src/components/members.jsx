@@ -1,4 +1,6 @@
 import React from 'react';
+import { useSpring, animated } from '@react-spring/web';
+import { useInView } from 'react-intersection-observer';
 import member1 from '../assets/members/asim.png';
 import member2 from '../assets/members/jawad.png';
 import member3 from '../assets/members/saad.png';
@@ -39,24 +41,39 @@ const Members = () => {
           Meet <span className='text-amber-500'>Our Team</span>
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {membersData.map((member, index) => (
-            <div
-              key={index}
-              className={`${member.bgColor} shadow-lg rounded-lg p-6 flex flex-col items-center transform transition duration-500 hover:scale-105`}
-            >
-              <img
-                src={member.imageUrl}
-                alt={member.name}
-                className="rounded-full w-32 h-32 mb-4 object-cover border-4 border-white"
-              />
-              <h3 className="text-xl font-semibold text-white mb-2 text-center">
-                {member.name}
-              </h3>
-              <p className="text-white text-center">
-                {member.description}
-              </p>
-            </div>
-          ))}
+          {membersData.map((member, index) => {
+            const { ref, inView } = useInView({
+              triggerOnce: true,
+              threshold: 0.1,
+            });
+
+            // React Spring animation
+            const animation = useSpring({
+              to: { transform: inView ? 'translateY(0)' : 'translateY(50px)', opacity: inView ? 1 : 0 },
+              config: { duration: 500 },
+            });
+
+            return (
+              <animated.div
+                ref={ref}
+                key={index}
+                className={`${member.bgColor} shadow-lg rounded-lg p-6 flex flex-col items-center transform transition-transform duration-300 ease-in-out hover:scale-105 hover:shadow-2xl`}
+                style={animation}
+              >
+                <img
+                  src={member.imageUrl}
+                  alt={member.name}
+                  className="rounded-full w-32 h-32 mb-4 object-cover border-4 border-white"
+                />
+                <h3 className="text-xl font-semibold text-white mb-2 text-center">
+                  {member.name}
+                </h3>
+                <p className="text-white text-center">
+                  {member.description}
+                </p>
+              </animated.div>
+            );
+          })}
         </div>
       </div>
     </section>

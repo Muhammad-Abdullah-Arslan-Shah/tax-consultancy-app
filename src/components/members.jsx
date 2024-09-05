@@ -50,7 +50,7 @@ const Members = () => {
             // React Spring animation with optimized configuration for smoother transitions
             const animation = useSpring({
               to: { transform: inView ? 'translateY(0)' : 'translateY(50px)', opacity: inView ? 1 : 0 },
-              config: { mass: 1, tension: 280, friction: 10, duration: 600 }, // smoother animation settings
+              config: {  duration: 600 }, // smoother animation settings
             });
 
             return (

@@ -26,7 +26,7 @@ const membersData = [
     bgColor: 'bg-red-500',
   },
   {
-    name: "Jawad Hassan – M.com, CMA, AIPA",
+    name: "Jawad Hassan – CMA,CIPFA,MIPA,MCOM",
     description: "Jawad has vast experience overseeing and supervising the organization’s Tax operations, ensuring Tax compliance, Returns, Exemptions, and Correspondences with Authorities.",
     imageUrl: member2,
     bgColor: 'bg-blue-500',
